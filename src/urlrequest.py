@@ -1,4 +1,3 @@
-import sys
 import re
 import urllib2
 import urlparse
@@ -33,7 +32,7 @@ class URLRequest:
 
                 if link.find(url[1]) == -1:
                     continue
-                urlManager.addURL(link)
+                urlManager.addURL(link, requestURL)
         except:
             print 'Exception on load url'
             return
