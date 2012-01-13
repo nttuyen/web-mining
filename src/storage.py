@@ -91,3 +91,14 @@ class MySQLDBStorage:
             return _return
         except:
             return set([])
+
+    def saveContentOfURL(self, url, content):
+        try:
+            query = "update url_queue set crawled = 1, data=%s where url = %s"
+            cur = self.connection.cursor()
+            cur.execute(query, (content, url))
+            self.connection.commit()
+            cur.close()
+            return 1
+        except:
+            return 0

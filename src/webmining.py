@@ -13,8 +13,11 @@ if __name__ == "__main__":
     from urlmanager import URLManager
     from urlrequest import URLRequest
     from storage import MySQLDBStorage
+    from htmlprocessor import VGHMTLProcessor
+
     storage = MySQLDBStorage('localhost', 'root', 'adminpass', 'nc_vgdb')
     urlManager = URLManager(storage)
+    processor = VGHMTLProcessor(storage)
     urlManager.addURL('http://{0}'.format(rootURL))
     urlManager.addURL('http://{0}/home'.format(rootURL))
     urlManager.addURL('http://{0}/home/'.format(rootURL))
@@ -24,5 +27,5 @@ if __name__ == "__main__":
         nextURL = urlManager.nextURL()
         if not nextURL:
             break
-        urlRequest.execute(nextURL, urlManager)
+        urlRequest.execute(nextURL, urlManager, processor)
     

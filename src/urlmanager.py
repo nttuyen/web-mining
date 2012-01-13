@@ -9,7 +9,7 @@ class URLManager:
         if not self.urlPendings:
             return ''
         nextURL = self.urlPendings.pop()
-        self.storage.crawledURL(nextURL)
+        #self.storage.crawledURL(nextURL)
         return nextURL
     
     def addURL(self, url, ref = ''):
